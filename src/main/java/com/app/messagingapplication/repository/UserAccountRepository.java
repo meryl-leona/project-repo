@@ -1,6 +1,6 @@
-package com.app.messenger.repository;
+package com.app.messagingapplication.repository;
 
-import com.app.messenger.entity.UserAccount;
+import com.app.messagingapplication.entity.UserAccount;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;

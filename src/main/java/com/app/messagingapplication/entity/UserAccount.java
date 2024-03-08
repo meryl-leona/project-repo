@@ -1,4 +1,4 @@
-package com.app.messenger.entity;
+package com.app.messagingapplication.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 

@@ -1,8 +1,8 @@
-package com.app.messenger.service;
+package com.app.messagingapplication.service;
 
-import com.app.messenger.entity.UserAccount;
-import com.app.messenger.repository.UserAccountRepository;
-import com.app.messenger.utility.exception.InvalidDataException;
+import com.app.messagingapplication.entity.UserAccount;
+import com.app.messagingapplication.repository.UserAccountRepository;
+import com.app.messagingapplication.utility.custom_exceptions.InvalidDataException;
 
 import lombok.extern.slf4j.Slf4j;
 

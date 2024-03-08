@@ -1,8 +1,9 @@
-package com.app.messenger.service;
+package com.app.messagingapplication.service;
 
-import com.app.messenger.entity.UserMessage;
-import com.app.messenger.repository.UserMessageRepository;
-import com.app.messenger.utility.exception.InvalidDataException;
+import com.app.messagingapplication.entity.UserMessage;
+import com.app.messagingapplication.repository.UserMessageRepository;
+import com.app.messagingapplication.utility.custom_exceptions.InvalidDataException;
+import com.app.messagingapplication.utility.kafka.KafkaProducer;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -20,7 +21,7 @@ public class UserUserMessageServiceTest {
     @Mock
     private UserMessageRepository userMessageRepository;
     @Mock
-    private KafkaProducerService kafkaProducerService;
+    private KafkaProducer kafkaProducer;
 
     @Test
     public void testShouldBeAbleToCreateUserAccount() throws InvalidDataException {

@@ -1,11 +1,12 @@
-package com.app.messenger.service;
+package com.app.messagingapplication.service;
 
-import com.app.messenger.entity.UserMessage;
-import com.app.messenger.repository.UserMessageRepository;
-import com.app.messenger.utility.exception.InvalidDataException;
+import com.app.messagingapplication.entity.UserMessage;
+import com.app.messagingapplication.repository.UserMessageRepository;
+import com.app.messagingapplication.utility.custom_exceptions.InvalidDataException;
 
 import java.util.List;
 
+import com.app.messagingapplication.utility.kafka.KafkaProducer;
 import lombok.extern.slf4j.Slf4j;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,7 +21,7 @@ public class UserMessageService implements IUserMessageService {
     UserMessageRepository userMessageRepository;
 
     @Autowired
-    private KafkaProducerService kafkaProducerService;
+    private KafkaProducer kafkaProducer;
 
     public String sendMessage(UserMessage userMessage) throws InvalidDataException {
         try {
@@ -30,7 +31,7 @@ public class UserMessageService implements IUserMessageService {
                 log.info("Sending message to {}", userMessage.getReceiver());
                 UserMessage saveUserMessageResult = userMessageRepository.save(userMessage);
                 //Put message on Kafka queue
-                kafkaProducerService.sendMessage(saveUserMessageResult);
+                kafkaProducer.sendMessage(saveUserMessageResult);
                 return "Message sent to " + saveUserMessageResult.getReceiver();
             }
 

@@ -1,4 +1,4 @@
-package com.app.messenger;
+package com.app.messagingapplication;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
