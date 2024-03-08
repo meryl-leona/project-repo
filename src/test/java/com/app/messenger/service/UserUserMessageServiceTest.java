@@ -16,7 +16,7 @@ import static org.mockito.Mockito.when;
 @ExtendWith(MockitoExtension.class)
 public class UserUserMessageServiceTest {
     @InjectMocks
-    private UserMessageService userMessageService;
+    private UserMessageService userMessageServiceImpl;
     @Mock
     private UserMessageRepository userMessageRepository;
     @Mock
@@ -27,13 +27,13 @@ public class UserUserMessageServiceTest {
         UserMessage expectedUserMessage = UserMessage.builder()
                 .id(1)
                 .message("message")
-                .sender("sentfrom")
-                .receiver("sentto")
+                .sender("senderNickname")
+                .receiver("receiverNickname")
                 .build();
         when(userMessageRepository.save(any())).thenReturn(expectedUserMessage);
 
-        String actualUserMessage = userMessageService.sendMessage(expectedUserMessage);
+        String actualUserMessage = userMessageServiceImpl.sendMessage(expectedUserMessage);
 
-        assertEquals(expectedUserMessage, actualUserMessage);
+        assertEquals("Message sent to receiverNickname", actualUserMessage);
     }
 }

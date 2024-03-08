@@ -13,12 +13,13 @@ import org.springframework.util.StringUtils;
 
 @Slf4j
 @Service
-public class UserAccountService {
+public class UserAccountService implements IUserAccountService {
 
     @Autowired
     UserAccountRepository userAccountRepository;
 
-    public String createNewAccount(UserAccount userAccount) throws InvalidDataException {
+    @Override
+    public String createUserAccount(UserAccount userAccount) throws InvalidDataException {
         boolean valid = validateUserInformation(userAccount);
         try {
             if (valid) {
@@ -34,4 +35,5 @@ public class UserAccountService {
     private boolean validateUserInformation (UserAccount userAccount) {
         return !StringUtils.isEmpty(userAccount.getNickname());
     }
+
 }

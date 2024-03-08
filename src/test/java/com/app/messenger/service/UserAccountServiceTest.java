@@ -16,21 +16,21 @@ import static org.mockito.Mockito.when;
 @ExtendWith(MockitoExtension.class)
 public class UserAccountServiceTest {
     @InjectMocks
-    private UserAccountService userAccountService;
+    private UserAccountService userAccountServiceImpl;
     @Mock
     private UserAccountRepository userAccountRepository;
 
     @Test
     public void testShouldBeAbleToCreateUserAccount() throws InvalidDataException {
         UserAccount expectedUserAccount = UserAccount.builder()
-                .nickname("nickname")
+                .nickname("test")
                 .firstname("firstname")
                 .lastname("lastname")
                 .build();
         when(userAccountRepository.save(any())).thenReturn(expectedUserAccount);
 
-        String actualUserAccount = userAccountService.createNewAccount(expectedUserAccount);
+        String actualUserAccount = userAccountServiceImpl.createUserAccount(expectedUserAccount);
 
-        assertEquals("User account created with nickname nickname", actualUserAccount);
+        assertEquals("User account created with nickname test", actualUserAccount);
     }
 }

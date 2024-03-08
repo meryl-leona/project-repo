@@ -4,7 +4,6 @@ import com.app.messenger.entity.UserMessage;
 import com.app.messenger.repository.UserMessageRepository;
 import com.app.messenger.utility.exception.InvalidDataException;
 
-import java.time.LocalDateTime;
 import java.util.List;
 
 import lombok.extern.slf4j.Slf4j;
@@ -15,28 +14,27 @@ import org.springframework.stereotype.Service;
 
 @Slf4j
 @Service
-public class UserMessageService {
+public class UserMessageService implements IUserMessageService {
 
     @Autowired
     UserMessageRepository userMessageRepository;
+
     @Autowired
     private KafkaProducerService kafkaProducerService;
 
     public String sendMessage(UserMessage userMessage) throws InvalidDataException {
         try {
             boolean isValid = validateMessageDetails(userMessage);
-            String receiver = userMessage.getReceiver();
 
             if(isValid){
-                userMessage.setCreatedTime(LocalDateTime.now());
-                log.info("Sending message to {}", receiver);
+                log.info("Sending message to {}", userMessage.getReceiver());
                 UserMessage saveUserMessageResult = userMessageRepository.save(userMessage);
                 //Put message on Kafka queue
                 kafkaProducerService.sendMessage(saveUserMessageResult);
-                return "Message sent to " + receiver;
+                return "Message sent to " + saveUserMessageResult.getReceiver();
             }
-            throw new InvalidDataException("You cannot send a message to yourself");
 
+            throw new InvalidDataException("You cannot send a message to yourself");
         } catch (DataIntegrityViolationException dataIntegrityViolationException) {
             throw new InvalidDataException("Invalid sender/receiver ID");
         }
@@ -72,4 +70,5 @@ public class UserMessageService {
     private boolean validateMessageDetails(UserMessage userMessage){
         return !userMessage.getReceiver().equalsIgnoreCase(userMessage.getSender());
     }
+
 }

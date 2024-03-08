@@ -7,8 +7,10 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface UserMessageRepository extends JpaRepository<UserMessage, String> {
+public interface UserMessageRepository extends JpaRepository<UserMessage, Long> {
+
     List<UserMessage> findAllBySender(String sender);
     List<UserMessage> findAllByReceiver(String receiver);
     List<UserMessage> findAllBySenderAndReceiver(String sender, String receiver);
+
 }
