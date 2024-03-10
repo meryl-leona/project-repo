@@ -24,7 +24,7 @@ public class UserAccountController {
     @Autowired
     IUserAccountService iUserAccountService;
 
-    @Operation(description = "Create user", summary = "Create new account by providing my nickname")
+    @Operation(description = "Create user", summary = "create new account by providing my nickname")
     @PostMapping(value = "/create")
     public ResponseEntity<Object> createUser(@RequestHeader @NotBlank String correlationId,
                                      @RequestHeader (defaultValue = "1.0.0", required = false) String version,

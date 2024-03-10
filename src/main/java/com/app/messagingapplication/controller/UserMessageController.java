@@ -25,7 +25,7 @@ public class UserMessageController {
     @Autowired
     IUserMessageService iUserMessageService;
 
-    @Operation(description = "Send message", summary = "Send message to another user identified by his/her nickname")
+    @Operation(description = "Send message", summary = "send message to another user identified by his/her nickname")
     @PostMapping(value = "/send")
     public ResponseEntity<Object> sendMessageToUser(@RequestHeader @NotBlank String correlationId,
                                                     @RequestHeader (defaultValue = "1.0.0", required = false) String version,
@@ -45,7 +45,7 @@ public class UserMessageController {
         }
     }
 
-    @Operation(description = "View sent messages", summary = "View all messages that I sent")
+    @Operation(description = "View sent messages", summary = "view all messages that I sent")
     @GetMapping(value = "/view/sent")
     public ResponseEntity<Object> fetchAllSentMessages(@RequestHeader @NotBlank String correlationId,
                                                        @RequestHeader (defaultValue = "1.0.0", required = false) String version,
@@ -65,7 +65,7 @@ public class UserMessageController {
         }
     }
 
-    @Operation(description = "View received messages", summary = "View all messages that I received")
+    @Operation(description = "View received messages", summary = "view all messages that I received")
     @GetMapping(value = "/view/received")
     public ResponseEntity<Object> fetchAllReceivedMessages(@RequestHeader @NotBlank String correlationId,
                                                            @RequestHeader (defaultValue = "1.0.0", required = false) String version,
@@ -85,7 +85,7 @@ public class UserMessageController {
         }
     }
 
-    @Operation(description = "View messages received from specific user", summary = "View all messages from a particular user")
+    @Operation(description = "View messages received from specific user", summary = "view all messages from a particular user")
     @GetMapping(value = "/view/received/from/{nickname}")
     public ResponseEntity<Object> fetchReceivedMessagesFromNickname(@RequestHeader @NotBlank String correlationId,
                                                                     @RequestHeader (defaultValue = "1.0.0", required = false) String version,
