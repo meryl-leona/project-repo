@@ -18,8 +18,6 @@ Step 1: Git Clone https://github.com/merylleona/project-repo
 
 Step 2: For DB and Kafka setup, from root directory of project execute docker-compose.yml
 
-(Note: update host, port, username and password in application.properties and docker-compose.yml files if required) 
-
 ```shell
 docker-compose up -d --build
 ```
@@ -41,7 +39,7 @@ or
 mvn spring-boot:run
 ```
 
-Once the application is up and running, check messaging application APIs through Swagger 
+Once the application is up and running, explore messaging application APIs through Swagger 
 
 http://localhost:8080/swagger-ui/index.html#/
 
@@ -55,7 +53,7 @@ http://localhost:8080/swagger-ui/index.html#/
    * Viewing all messages received from a particular user
 2. All data/messages persisted in PostgreSQL
 3. Sending message puts a message on Kafka queue
-4. Flyway integration for quick and easy DB script execution/migration
+4. Flyway integration for quick and easy DB script executions
 
 ### Improvements to existing application
 
