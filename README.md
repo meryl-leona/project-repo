@@ -54,7 +54,7 @@ http://localhost:8080/swagger-ui/index.html#/
 2. All data/messages persisted in PostgreSQL
 3. Sending message puts a message on Kafka queue
 4. Unit tests written using Mockito framework for Test-Driven Development (TDD)
-5. Flyway integration for quick and easy DB script executions
+5. Flyway integration for DB script executions
 
 ### Improvements to existing application
 
