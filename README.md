@@ -47,15 +47,16 @@ http://localhost:8080/swagger-ui/index.html#/
 
 1. REST webservice HTTP API implementation for
    * Creating new account using (unique) nickname
-   * Sending message to another user identified by his/her ID(nickname)
+   * Sending message to another user identified by his/her ID (nickname)
    * Viewing all messages that I received
    * Viewing all messages that I sent
    * Viewing all messages received from a particular user
 2. All data/messages persisted in PostgreSQL
 3. Sending message puts a message on Kafka queue
-4. Flyway integration for quick and easy DB script executions
+4. Unit tests written using Mockito framework for Test-Driven Development (TDD)
+5. Flyway integration for quick and easy DB script executions
 
 ### Improvements to existing application
 
 * Implement API security using OAuth
-* Fetch message from Kafka queue and write to report table for generation of Audit reports
+* Implement audit report generation feature
